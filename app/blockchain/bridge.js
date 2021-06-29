@@ -32,7 +32,7 @@ class Provider {
     }
 
     async getBlockNumber() {
-        return this.provider.getBlockNumber();
+        return await this.provider.getBlockNumber();
     }
 
     async getEventList(fromBlock, toBlock = "latest") {
