@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "QueryGasPrice",
+  "description": "query blockchain gas price",
+  "type": "object",
+  "properties": {
+    "chain": {
+      "$ref": "currency"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "chain"
+  ]
+}

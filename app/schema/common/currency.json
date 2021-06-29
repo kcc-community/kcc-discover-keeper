@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "currency",
+  "description": "blockchain common currency",
+  "type": "string",
+  "link": "currency",
+  "pattern": "^[a-z|A-Z|0-9]{1,12}$"
+}

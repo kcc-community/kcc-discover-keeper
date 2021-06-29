@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "address",
+  "description": "blockchain common address",
+  "type": "string",
+  "format": "address",
+  "link": "address",
+  "pattern": "^(0x|0X)?[0-9a-zA-Z:]{1,120}$"
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "sinteger",
+  "description": "blockchain common string sinteger",
+  "type": "string",
+  "format": "sinteger",
+  "link": "sinteger",
+  "pattern": "^(0|[1-9]\\d*)$"
+}
