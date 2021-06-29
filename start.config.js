@@ -16,7 +16,7 @@ module.exports = {
         },
         {
             name:               "bridge-keeper-eth-event",
-            script:             "./app/service/event.js",
+            script:             "./app/service/eth/event.js",
             watch:              false,
             ignore_watch:       ["node_modules", "logs", "report"],
             out_file:           "./logs/pm2/crontab.eth.event.synchronizer.out.log",
@@ -30,7 +30,7 @@ module.exports = {
         },
         {
             name:               "bridge-keeper-eth-gasprice",
-            script:             "./app/service/gasprice.js",
+            script:             "./app/service/eth/gasprice.js",
             watch:              false,
             ignore_watch:       ["node_modules", "logs", "report"],
             out_file:           "./logs/pm2/crontab.eth.gasprice.synchronizer.out.log",
@@ -44,7 +44,7 @@ module.exports = {
         },
         {
             name:               "bridge-keeper-kcc-event",
-            script:             "./app/service/event.js",
+            script:             "./app/service/kcc/event.js",
             watch:              false,
             ignore_watch:       ["node_modules", "logs", "report"],
             out_file:           "./logs/pm2/crontab.kcc.event.synchronizer.out.log",
