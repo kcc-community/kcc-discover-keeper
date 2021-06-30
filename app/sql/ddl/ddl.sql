@@ -1,3 +1,4 @@
+CREATE TABLE `event` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `chain` varchar(32) NOT NULL COMMENT '币种链名',
   `address` varchar(64) NOT NULL COMMENT '合约地址',
