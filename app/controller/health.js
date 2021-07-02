@@ -12,7 +12,7 @@ const {ControllerBase} = require("./base");
 
 class HealthController extends ControllerBase {
     /**
-     * 进程健康：服务心跳检测
+     * heartbeat
      * @param ctx
      * @returns {Promise<void>}
      */

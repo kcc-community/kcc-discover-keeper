@@ -2,12 +2,12 @@
 
 [English](README.md) | 简体中文
 
-## 基础指南
+## 服务
 ```javascript
-// 执行安装
+// 安装
 npm install --production
 
-// 启动服务
+// 启动
 pm2 start start.config.js
 ┌─────┬───────────────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
 │ id  │ name                          │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │

@@ -10,43 +10,6 @@ const path   = require("path");
 const config = {
     blockchain: {
         testnet: true,
-        eth:     {
-            mainnet: {
-                network:       "mainnet",
-                chainId:       1,
-                fullnode:      "https://infura.io/v3",
-                apiKey:        "80d3beb1a7984234a221e55db17b8cdf",
-                confirmations: 6,
-                bridgeAddress: "TODO",
-            },
-            testnet: {
-                network:       "rinkeby",
-                chainId:       4,
-                fullnode:      "https://rinkeby.infura.io/v3",
-                apiKey:        "80d3beb1a7984234a221e55db17b8cdf",
-                confirmations: 1,
-                bridgeAddress: "0x7c017970B36a5c50E1221e3F70f447dFCb931472",
-            },
-        },
-        kcc:     {
-            mainnet: {
-                network:       "mainnet",
-                chainId:       321,
-                fullnode:      "https://rpc-mainnet.kcc.network",
-                apiKey:        "",
-                confirmations: 21,
-                bridgeAddress: "TODO",
-            },
-            testnet: {
-                network:           "testnet",
-                chainId:           322,
-                fullnode:          "https://rpc-testnet.kcc.network",
-                apiKey:            "",
-                confirmations:     1,
-                bridgeAddress:     "0x69b644CE2d0f2c80D02312ef4fD05a1a2aAf3697",
-                bridgePairAddress: "0x98186911436588a7243C646F34dfAEf3eEE99418",
-            },
-        },
     },
     gateway:    {
         name:       "gateway",

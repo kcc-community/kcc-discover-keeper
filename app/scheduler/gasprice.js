@@ -29,7 +29,6 @@ class SynchronizerJob extends JobBase {
     }
 
     /**
-     * 重写父类定义
      * @returns {Promise<void>}
      */
     async execute() {
@@ -93,8 +92,8 @@ class ETHGasNowSynchronizerJob extends SynchronizerJob {
 
         return {
             "chain":   this.chain,
-            "fastest": Ethers.BigNumber.from(result.data.rapid).div(1000000000).toString(),
-            "fast":    Ethers.BigNumber.from(result.data.fast).div(1000000000).toString(),
+            "fastest": Ethers.BigNumber.from(result.data.rapid).div("1000000000").toString(),
+            "fast":    Ethers.BigNumber.from(result.data.fast).div("1000000000").toString(),
             "source":  this.source,
         };
     }

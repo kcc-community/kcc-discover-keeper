@@ -17,7 +17,7 @@ const EventDaoModel = require("../model/event");
 
 
 /**
- * 事件信息View
+ * View
  */
 class EventDaoView extends ViewBase {
     constructor() {
@@ -25,7 +25,6 @@ class EventDaoView extends ViewBase {
     }
 
     /**
-     * 查询当前链开始同步的高度
      * @param chain
      * @param status
      * @returns {Promise<number>}
@@ -44,7 +43,6 @@ class EventDaoView extends ViewBase {
     }
 
     /**
-     * 查询当前分页事件信息
      * @param where
      * @param offset
      * @param limit

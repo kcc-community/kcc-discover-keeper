@@ -51,11 +51,6 @@ class BlockChainApiModel {
 }
 
 
-class BlockChainCrontabModel {
-
-}
-
-
 module.exports = {
     BlockChainApiModel,
 };

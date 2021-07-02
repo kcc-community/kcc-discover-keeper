@@ -13,9 +13,9 @@ const {HealthController}     = require("./health");
 const router                 = new Router({prefix: __gateway__.prefix});
 
 
-router.get("/heartbeat", HealthController.heartbeat.bind(HealthController));                // 服务心跳检测
-router.get("/gasprice", BlockChainController.queryGasPrice.bind(BlockChainController));     // 查询gasPrice
-router.get("/event", BlockChainController.queryEventList.bind(BlockChainController));       // 查询事件列表
+router.get("/heartbeat", HealthController.heartbeat.bind(HealthController));
+router.get("/gasprice", BlockChainController.queryGasPrice.bind(BlockChainController));
+router.get("/event", BlockChainController.queryEventList.bind(BlockChainController));
 
 
 module.exports = {

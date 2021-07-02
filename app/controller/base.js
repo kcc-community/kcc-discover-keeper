@@ -11,7 +11,7 @@ const {Success} = require("node-common-sdk").error;
 
 class ControllerBase {
     /**
-     * 接口数据流Before
+     * Before
      * @param ctx
      * @returns {Promise<*>}
      */
@@ -29,7 +29,7 @@ class ControllerBase {
     }
 
     /**
-     * 接口数据流After
+     * After
      * @param ctx
      * @param response
      * @returns {Promise<void>}
@@ -39,7 +39,7 @@ class ControllerBase {
     }
 
     /**
-     * 接口数据流Flow
+     * Flow
      * @param ctx
      * @param method
      * @returns {Promise<void>}

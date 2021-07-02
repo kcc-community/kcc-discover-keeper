@@ -9,10 +9,7 @@
 const {blockchain: __blockchain__} = require("../config/config");
 const logger                       = require("node-common-sdk").logger();
 const {JobBase}                    = require("node-common-sdk/lib/scheduler");
-const {
-          Bridge,
-          BridgePair,
-      }                            = require("../blockchain/bridge");
+const {Contract}                   = require("kcc-bridge-sdk").contract;
 const {EventDaoView}               = require("../dao");
 
 
@@ -25,7 +22,6 @@ class SynchronizerJob extends JobBase {
     }
 
     /**
-     * 重写父类定义
      * @returns {Promise<void>}
      */
     async execute() {
@@ -62,37 +58,23 @@ class SynchronizerJob extends JobBase {
 }
 
 
-class ETHBridgeSynchronizerJob extends SynchronizerJob {
+class ETHBridgeCoreSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
-        const source       = __blockchain__.testnet ? __blockchain__.eth.testnet : __blockchain__.eth.mainnet;
-        const props        = {
-            chain:   "eth",
-            chainId: source.chainId,
-            address: source.bridgeAddress,
-            apiKey:  source.apiKey,
-        };
-        this.confirmations = source.confirmations;
-        this.handler       = new Bridge(props);
+        this.handler       = Contract.getBridgeCore("eth", {testnet: __blockchain__.testnet});
+        this.confirmations = this.handler.props.confirmations;
     }
 
 }
 
 
-class KCCBridgeSynchronizerJob extends SynchronizerJob {
+class KCCBridgeCoreSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
-        const source       = __blockchain__.testnet ? __blockchain__.kcc.testnet : __blockchain__.kcc.mainnet;
-        const props        = {
-            chain:   "kcc",
-            chainId: source.chainId,
-            address: source.bridgeAddress,
-            url:     source.fullnode,
-        };
-        this.confirmations = source.confirmations;
-        this.handler       = new Bridge(props);
+        this.handler       = Contract.getBridgeCore("kcc", {testnet: __blockchain__.testnet});
+        this.confirmations = this.handler.props.confirmations;
     }
 
 }
@@ -102,22 +84,15 @@ class KCCBridgePairSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
-        const source       = __blockchain__.testnet ? __blockchain__.kcc.testnet : __blockchain__.kcc.mainnet;
-        const props        = {
-            chain:   "kcc",
-            chainId: source.chainId,
-            address: source.bridgePairAddress,
-            url:     source.fullnode,
-        };
-        this.confirmations = source.confirmations;
-        this.handler       = new BridgePair(props);
+        this.handler       = Contract.getBridgePair("kcc", {testnet: __blockchain__.testnet});
+        this.confirmations = this.handler.props.confirmations;
     }
 
 }
 
 
 module.exports = {
-    ETHBridgeSynchronizerJob,
-    KCCBridgeSynchronizerJob,
+    ETHBridgeCoreSynchronizerJob,
+    KCCBridgeCoreSynchronizerJob,
     KCCBridgePairSynchronizerJob,
 };

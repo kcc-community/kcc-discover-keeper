@@ -12,7 +12,7 @@ const {CronJob}              = require("cron");
 const {CronBase}             = require("node-common-sdk/lib/scheduler");
 const {AppHook}              = require("../../middleware/hook");
 const {
-          KCCBridgeSynchronizerJob,
+          KCCBridgeCoreSynchronizerJob,
           KCCBridgePairSynchronizerJob,
       }                      = require("../../scheduler/event");
 
@@ -20,7 +20,7 @@ const {
 process.on("SIGINT", AppHook.onStop);
 
 
-const synchronizerScheduler = new CronBase(__cronjob__.kcc_event_synchronizer.name, [KCCBridgeSynchronizerJob, KCCBridgePairSynchronizerJob]);
+const synchronizerScheduler = new CronBase(__cronjob__.kcc_event_synchronizer.name, [KCCBridgeCoreSynchronizerJob, KCCBridgePairSynchronizerJob]);
 new CronJob(__cronjob__.kcc_event_synchronizer.schedule, synchronizerScheduler.onUpdate.bind(synchronizerScheduler)).start();
 
 

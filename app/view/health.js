@@ -9,7 +9,7 @@
 class HealthApiView {
     static heartbeat(request) {
         return {
-            "uuid": request.parameter.reqid,                                                          // 请求UUIDstring
+            "uuid": request.parameter.reqid,
         };
     }
 

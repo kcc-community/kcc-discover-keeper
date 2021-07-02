@@ -15,7 +15,7 @@ const {ControllerBase}       = require("./base");
 
 class BlockChainController extends ControllerBase {
     /**
-     * 区块链相关：查询gasPrice
+     * gasPrice
      * @param ctx
      * @returns {Promise<void>}
      */
@@ -29,7 +29,7 @@ class BlockChainController extends ControllerBase {
     }
 
     /**
-     * 区块链相关：查询事件列表
+     * event
      * @param ctx
      * @returns {Promise<void>}
      */

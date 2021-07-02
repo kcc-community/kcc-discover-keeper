@@ -22,7 +22,6 @@ class GasPriceDaoView extends ViewBase {
     }
 
     /**
-     * 查询当前GasPrice信息
      * @param where
      * @param offset
      * @param limit
