@@ -6,11 +6,14 @@
 */
 
 
-const {blockchain: __blockchain__} = require("../config/config");
-const logger                       = require("node-common-sdk").logger();
-const {JobBase}                    = require("node-common-sdk/lib/scheduler");
-const {Contract}                   = require("kcc-bridge-sdk").contract;
-const {EventDaoView}               = require("../dao");
+const {
+          blockchain:  __blockchain__,
+          integration: __integration__,
+      }              = require("../config/config");
+const logger         = require("node-common-sdk").logger();
+const {JobBase}      = require("node-common-sdk/lib/scheduler");
+const {Contract}     = require("kcc-bridge-sdk").contract;
+const {EventDaoView} = require("../dao");
 
 
 class SynchronizerJob extends JobBase {
@@ -62,7 +65,11 @@ class ETHBridgeCoreSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
-        this.handler       = Contract.getBridgeCore("eth", {testnet: __blockchain__.testnet});
+        this.handler       = Contract.getBridgeCore("eth",
+            {
+                testnet:  __blockchain__.testnet,
+                fullnode: __integration__.ethFullnode,
+            });
         this.confirmations = this.handler.props.confirmations;
     }
 
@@ -73,7 +80,11 @@ class KCCBridgeCoreSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
-        this.handler       = Contract.getBridgeCore("kcc", {testnet: __blockchain__.testnet});
+        this.handler       = Contract.getBridgeCore("kcc",
+            {
+                testnet:  __blockchain__.testnet,
+                fullnode: __integration__.kccFullnode,
+            });
         this.confirmations = this.handler.props.confirmations;
     }
 
@@ -84,7 +95,10 @@ class KCCBridgePairSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
-        this.handler       = Contract.getBridgePair("kcc", {testnet: __blockchain__.testnet});
+        this.handler       = Contract.getBridgePair("kcc", {
+            testnet:  __blockchain__.testnet,
+            fullnode: __integration__.kccFullnode,
+        });
         this.confirmations = this.handler.props.confirmations;
     }
 

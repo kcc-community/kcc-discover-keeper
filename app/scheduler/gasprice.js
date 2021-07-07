@@ -6,12 +6,13 @@
 */
 
 
-const assert            = require("assert");
-const Ethers            = require("ethers");
-const logger            = require("node-common-sdk").logger();
-const {JobBase}         = require("node-common-sdk/lib/scheduler");
-const {HttpConnection}  = require("node-common-sdk/lib/connection/http");
-const {GasPriceDaoView} = require("../dao");
+const {integration: __integration__} = require("../config/config");
+const assert                         = require("assert");
+const Ethers                         = require("ethers");
+const logger                         = require("node-common-sdk").logger();
+const {JobBase}                      = require("node-common-sdk/lib/scheduler");
+const {HttpConnection}               = require("node-common-sdk/lib/connection/http");
+const {GasPriceDaoView}              = require("../dao");
 
 
 class SynchronizerJob extends JobBase {
@@ -60,7 +61,7 @@ class ETHGasStationSynchronizerJob extends SynchronizerJob {
 
         this.chain  = "eth";
         this.source = "ethgasstation";
-        this.url    = "https://ethgasstation.info/api/ethgasAPI.json";
+        this.url    = __integration__.ethGasStation;
     }
 
     async getGasPrice() {
@@ -83,7 +84,7 @@ class ETHGasNowSynchronizerJob extends SynchronizerJob {
 
         this.chain  = "eth";
         this.source = "gasnow";
-        this.url    = "https://www.gasnow.org/api/v3/gas/price?utm_source=bridge-keeper";
+        this.url    = __integration__.ethGasNow;
     }
 
     async getGasPrice() {
