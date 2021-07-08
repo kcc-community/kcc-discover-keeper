@@ -12,10 +12,10 @@ const config = {
         testnet: true,
     },
     integration: {
-        ethGasStation: "http://35.230.71.255:16010",
-        ethGasNow:     "http://35.230.71.255:16020",
-        ethFullnode:   "http://35.230.71.255:17010",
-        kccFullnode:   "http://35.230.71.255:17020",
+        ethGasStation: "https://bridge-testnet.kcc.network:16010",
+        ethGasNow:     "https://bridge-testnet.kcc.network:16020",
+        ethFullnode:   "https://bridge-testnet.kcc.network:17010",
+        kccFullnode:   "https://bridge-testnet.kcc.network:17020",
     },
     gateway:     {
         name:       "gateway",
