@@ -6,16 +6,20 @@
 */
 
 
+require("dotenv").config();
+
+
 const path   = require("path");
 const config = {
     blockchain:  {
-        testnet: true,
+        testnet: process.env.TESTNET,
+        step:    1000,
     },
     integration: {
-        ethGasStation: "https://bridge-testnet.kcc.network:16010",
-        ethGasNow:     "https://bridge-testnet.kcc.network:16020",
-        ethFullnode:   "https://bridge-testnet.kcc.network:17010",
-        kccFullnode:   "https://bridge-testnet.kcc.network:17020",
+        ethGasStation: process.env.ETH_GAS_STATION,
+        ethGasNow:     process.env.ETH_GAS_NOW,
+        ethFullnode:   process.env.ETH_FULLNODE,
+        kccFullnode:   process.env.KCC_FULLNODE,
     },
     gateway:     {
         name:       "gateway",
@@ -30,27 +34,27 @@ const config = {
         },
     },
     cronjob:     {
-        eth_event_synchronizer:     {
+        eth_event_synchronizer:    {
             name:     "cronjob-eth-event",
             logDir:   path.join(__dirname, "../../logs/cronjob/eth-event"),
             logLevel: "info",
-            schedule: "*/10 * * * * *",
+            schedule: "*/60 * * * * *",
         },
-        eth_gas_price_synchronizer: {
-            name:     "cronjob-eth-gas-price",
-            logDir:   path.join(__dirname, "../../logs/cronjob/eth-gas-price"),
+        eth_gasprice_synchronizer: {
+            name:     "cronjob-eth-gasprice",
+            logDir:   path.join(__dirname, "../../logs/cronjob/eth-gasprice"),
             logLevel: "info",
             schedule: "*/60 * * * * *",
         },
-        kcc_event_synchronizer:     {
+        kcc_event_synchronizer:    {
             name:     "cronjob-kcc-event",
             logDir:   path.join(__dirname, "../../logs/cronjob/kcc-event"),
             logLevel: "info",
-            schedule: "*/10 * * * * *",
+            schedule: "*/60 * * * * *",
         },
     },
     mysql:       {
-        url:     "mysql://root:root@127.0.0.1:3306/keeper",
+        url:     process.env.DATABASE,
         options: {
             pool:      {
                 max: 50,
@@ -60,7 +64,7 @@ const config = {
                 timestamps:      false,
                 freezeTableName: true,
             },
-            timezone:  "+08:00",
+            timezone:  "+00:00",
             benchmark: true,
         },
         echo:    true,

@@ -27,7 +27,7 @@ class EventDaoView extends ViewBase {
     /**
      * @param chain
      * @param status
-     * @returns {Promise<number>}
+     * @returns {Promise<void|number>}
      */
     async queryMaxBlockNumber(chain, status = StatusEnum.ENABLE.value) {
         const result = await this.max("blockNumber", {
@@ -39,7 +39,7 @@ class EventDaoView extends ViewBase {
             return 0;
         }
 
-        return result + 1;
+        return result;
     }
 
     /**

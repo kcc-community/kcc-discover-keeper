@@ -7,6 +7,7 @@
 
 
 const {sequelizer}      = require("./connection/sequelize");
+const {BlockDaoView}    = require("./view/block");
 const {EventDaoView}    = require("./view/event");
 const {GasPriceDaoView} = require("./view/gasprice");
 
@@ -14,6 +15,7 @@ const {GasPriceDaoView} = require("./view/gasprice");
 module.exports = {
     sequelizer,
 
+    BlockDaoView,
     EventDaoView,
     GasPriceDaoView,
 

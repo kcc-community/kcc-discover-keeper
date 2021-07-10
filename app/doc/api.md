@@ -1,25 +1,25 @@
-### 文档索引
-* [接口定义](#接口定义)
-* [服务心跳检测](#服务心跳检测)
-* [查询链gasPrice](#查询链gasPrice)
-* [查询event列表](#查询event列表)
+### Document Index
+* [Interface definition](#interface definition)
+* [Service heartbeat detection](#Service heartbeat detection)
+* [Query chain gasPrice](#Query chain gasPrice)
+* [Query event list](#Query event list)
 
-# 接口定义
-## 请求参数
-| 字段         | 类型   | 必填 | 描述           |
+# Interface definition
+## Request parameters
+| Field | Type | Required | Description |
 | ------------ | ------ | ---- | -------------- |
-| X-B3-Traceid | String | 是   | 在header中携带 |
+| X-B3-Traceid | String | yes | carry in the header |
 
-## 成功响应
-| 字段      | 类型    | 必填 | 描述            |
+## Successful response
+| Field | Type | Required | Description |
 | --------- | ------- | ---- | --------------- |
-| code      | Int     | 是   | 响应编码 0-成功 |
-| data      | Object  | 是   | 响应内容        |
-| msg       | String  | 是   | 响应备注        |
-| signature | String  | 是   | 响应签名        |
-| success   | Boolean | 是   | 是否成功        |
+| code | Int | yes | response code 0-success |
+| data | Object | yes | response content |
+| msg | String | yes | response message |
+| signature | String | yes | response signature |
+| success | Boolean | yes | success |
 
-## 响应示例
+## Response example
 ```javascript
 {
     "code":0,
@@ -30,23 +30,23 @@
 }
 ```
 
-# 服务心跳检测
-## 请求方法
+# Service heartbeat detection
+## Request method
 **GET**
 
-## 请求接口
+## Request interface
 **/v1/bridge/keeper/heartbeat**
 
-## 请求参数
-| 字段 | 类型 | 必填 | 描述 |
+## Request parameters
+| Field | Type | Required | Description |
 | ---- | ---- | ---- | ---- |
 
-## 成功响应
-| 字段 | 类型   | 必填 | 描述 |
+## Successful response
+| Field | Type | Required | Description |
 | ---- | ------ | ---- | ---- |
-| uuid | String | 是   |      |
+| uuid | String | yes | |
 
-## 响应示例
+## Response example
 ```javascript
 {
     "code": 0,
@@ -59,29 +59,29 @@
 }
 ```
 
-# 查询链gasPrice
-## 请求方法
+# Query chain gasPrice
+## Request method
 
 **GET**
-## 请求接口
+## Request interface
 **/v1/bridge/keeper/gasprice**
 
-## 请求参数
-| 字段  | 类型   | 必填 | 描述 |
+## Request parameters
+| Field | Type | Required | Description |
 | ----- | ------ | ---- | ---- |
-| chain | String | 是   | 链   |
+| chain | String | yes | chain |
 
-## 成功响应
-| 字段       | 类型   | 必填 | 描述       |
+## Successful response
+| Field | Type | Required | Description |
 | ---------- | ------ | ---- | ---------- |
-| chain      | String | 是   | 链         |
-| fastest    | String | 是   | 极快(Gwei) |
-| fast       | String | 是   | 快速(Gwei) |
-| source     | String | 是   | 播报来源   |
-| status     | Int    | 是   | 是否有效   |
-| updateTime | String | 是   | 更新时间   |
+| chain | String | yes | chain |
+| fastest | String | yes | GWei |
+| fast | String | yes | fast (GWei) |
+| source | String | yes | source |
+| status | Int | yes | 1 it's valid |
+| updateTime | String | yes | update time |
 
-## 响应示例
+## Response example
 ```javascript
 {
     "code": 0,
@@ -99,38 +99,38 @@
 }
 ```
 
-# 查询event列表
-## 请求方法
+# Query event list
+## Request method
 **GET**
 
-## 请求接口
+## Request interface
 **/v1/bridge/keeper/event**
 
-## 请求参数
-| 字段  | 类型   | 必填        | 描述     |
+## Request parameters
+| Field | Type | Required | Description |
 | ----- | ------ | ----------- | -------- |
-| id    | Int    | 否，默认0   | 编号     |
-| chain | String | 否          | 链       |
-| page  | Int    | 否，默认1   | 当前页码 |
-| limit | Int    | 否，默认100 | 每页大小 |
+| id | Int | No, default 0 | id |
+| chain | String | No | chain |
+| page | Int | No, default 1 | current page number |
+| limit | Int | No, default 100 | size per page |
 
-## 成功响应
-| 字段        | 类型   | 必填 | 描述     |
+## Successful response
+| Field | Type | Required | Description |
 | ----------- | ------ | ---- | -------- |
-| id          | Int    | 是   | 编号     |
-| chain       | String | 是   | 链       |
-| address     | String | 是   | 合约地址 |
-| blockHash   | String | 是   | 区块哈希 |
-| blockNumber | Int    | 是   | 区块高度 |
-| version     | Int    | 是   | 幂等版本 |
-| txHash      | String | 是   | 交易哈希 |
-| txIndex     | Int    | 是   | 交易索引 |
-| logIndex    | Int    | 是   | 事件索引 |
-| event       | String | 是   | 事件名称 |
-| args        | Object | 是   | 事件参数 |
-| status      | Int    | 是   | 是否有效 |
+| id | Int | yes | number |
+| chain | String | yes | chain |
+| address | String | yes | contract address |
+| blockHash | String | yes | block Hash |
+| blockNumber | Int | yes | block height |
+| version | Int | yes | idempotent version |
+| txHash | String | yes | transaction Hash |
+| txIndex | Int | yes | transaction Index |
+| logIndex | Int | yes | event Index |
+| event | String | yes | event name |
+| args | Object | yes | event parameters |
+| status | Int | yes | 1 it's valid |
 
-## 响应示例
+## Response example
 ```javascript
 {
     "code": 0,
