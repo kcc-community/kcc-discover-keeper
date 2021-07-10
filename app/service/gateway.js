@@ -16,8 +16,8 @@ const {router}               = require("../controller");
 const app                    = new Koa();
 
 
-app.use(cors());
-app.use(AppHook.ApiLimiter());
+// app.use(cors());
+// app.use(AppHook.ApiLimiter());
 app.use(AppHook.BodyParser());
 app.use(AppHook.onMessage);
 app.use(router.routes());

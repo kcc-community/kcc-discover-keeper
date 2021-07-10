@@ -9,19 +9,16 @@
 const {
           blockchain:  __blockchain__,
           integration: __integration__,
-      }          = require("../config/config");
-const logger     = require("node-common-sdk").logger();
-const {Datetime} = require("node-common-sdk").util;
-const {JobBase}  = require("node-common-sdk/lib/scheduler");
-const {Contract} = require("kcc-bridge-sdk").contract;
+      }                                  = require("../config/config");
+const logger                             = require("node-common-sdk").logger();
+const {Datetime}                         = require("node-common-sdk").util;
+const {JobBase}                          = require("node-common-sdk/lib/scheduler");
+const {Contract}                         = require("kcc-bridge-sdk").contract;
 const {
-          BlockDaoView,
           EventDaoView,
-      }          = require("../dao");
-const {
-          MonitorBlockNumberBehind5Minutes,
-          MonitorEventWithFailedReceiptStatus,
-      }          = require("../common/monitor");
+          RecordDaoView,
+      }                                  = require("../dao");
+const {MonitorBlockNumberBehind5Minutes} = require("../common/monitor");
 
 
 class SynchronizerJob extends JobBase {
@@ -33,36 +30,39 @@ class SynchronizerJob extends JobBase {
         super(parameter);
 
         this.handler = null;
-        this.block   = new BlockDaoView();
+        this.type    = null;
         this.event   = new EventDaoView();
+        this.record  = new RecordDaoView();
     }
 
     async execute() {
-        const block = await this.block.queryBlockInfo(this.handler.chain);
-        if (!!!block) {
+        const record = await this.record.queryRecord(this.handler.chain, this.type);
+        if (!!!record) {
             logger.info({
                 ...this.context,
-                message: `chain=${this.handler.chain}||can't find block info`,
+                message: `chain=${this.handler.chain}||event=${this.type}||can't find record`,
             });
             return;
         }
-        if (Datetime.fromString1(block.updateTime).seconds < (Datetime.fromNow().seconds - SynchronizerJob.SECONDS)) {
-            logger.monitor(new MonitorBlockNumberBehind5Minutes().toString(`${block.updateTime}||${block.keeperBlockNumber}||${block.latestBlockNumber}`));
+        if (parseInt(Datetime.fromString1(record.updateTime).seconds) < (parseInt(Datetime.fromNow().seconds) - SynchronizerJob.SECONDS)) {
+            logger.monitor(new MonitorBlockNumberBehind5Minutes().toString(`${record.updateTime}||keeper=${record.keeperBlockNumber}||latest=${record.latestBlockNumber}`));
         }
 
         const latest = await this.handler.getBlockNumber();
         const upper  = latest - this.confirmations;
-        const lower  = block.keeperBlockNumber;
-        for (let i = lower; i < upper; i += block.steps) {
-            let j = i + block.steps;
+        const lower  = record.keeperBlockNumber;
+        for (let i = lower; i < upper; i += record.steps - 1) {
+            let j = i + record.steps - 1;
             if (j > upper) {
                 j = upper;
             }
             await this.runnable(i, j);
-            await this.block.updateBlockInfo({
-                keeperBlockNumber: upper,
+            await this.record.updateRecord({
+                keeperBlockNumber: j,
                 latestBlockNumber: latest,
-            }, block.id);
+            }, record.id);
+
+            i++;
         }
 
         logger.info({
@@ -79,20 +79,15 @@ class SynchronizerJob extends JobBase {
 
         const events = await this.handler.getEventList(fromBlock, toBlock);
         for (let event of events) {
-            const receipt = await this.handler.getTransactionReceipt(event.txHash);
-            if (!!receipt && receipt.status === 1) {
-                await this.event.findOrCreate(
-                    {
-                        chain:    event.chain,
-                        txHash:   event.txHash,
-                        txIndex:  event.txIndex,
-                        logIndex: event.logIndex,
-                    },
-                    event,
-                );
-            } else {
-                logger.monitor(new MonitorEventWithFailedReceiptStatus().toString(`${event.chain}||${event.txHash}||${event.logIndex}||${receipt && receipt.status}`));
-            }
+            await this.event.findOrCreate(
+                {
+                    chain:    event.chain,
+                    txHash:   event.txHash,
+                    txIndex:  event.txIndex,
+                    logIndex: event.logIndex,
+                },
+                event,
+            );
         }
     }
 
@@ -109,6 +104,7 @@ class ETHBridgeCoreSynchronizerJob extends SynchronizerJob {
                 fullnode: __integration__.ethFullnode,
             });
         this.confirmations = this.handler.props.confirmations;
+        this.type          = "bridge-core";
     }
 
 }
@@ -124,6 +120,7 @@ class KCCBridgeCoreSynchronizerJob extends SynchronizerJob {
                 fullnode: __integration__.kccFullnode,
             });
         this.confirmations = this.handler.props.confirmations;
+        this.type          = "bridge-core";
     }
 
 }
@@ -138,6 +135,7 @@ class KCCBridgePairSynchronizerJob extends SynchronizerJob {
             fullnode: __integration__.kccFullnode,
         });
         this.confirmations = this.handler.props.confirmations;
+        this.type          = "bridge-pair";
     }
 
 }

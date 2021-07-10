@@ -6,14 +6,12 @@
 */
 
 
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({path: path.join(__dirname, "../../.env")});
 
-
-const path   = require("path");
 const config = {
     blockchain:  {
-        testnet: process.env.TESTNET,
-        step:    1000,
+        testnet: process.env.TESTNET === "true",
     },
     integration: {
         ethGasStation: process.env.ETH_GAS_STATION,
@@ -34,21 +32,27 @@ const config = {
         },
     },
     cronjob:     {
-        eth_event_synchronizer:    {
-            name:     "cronjob-eth-event",
-            logDir:   path.join(__dirname, "../../logs/cronjob/eth-event"),
+        eth_core_event_synchronizer: {
+            name:     "cronjob-eth-core-event",
+            logDir:   path.join(__dirname, "../../logs/cronjob/eth-core-event"),
             logLevel: "info",
             schedule: "*/60 * * * * *",
         },
-        eth_gasprice_synchronizer: {
+        eth_gasprice_synchronizer:   {
             name:     "cronjob-eth-gasprice",
             logDir:   path.join(__dirname, "../../logs/cronjob/eth-gasprice"),
             logLevel: "info",
             schedule: "*/60 * * * * *",
         },
-        kcc_event_synchronizer:    {
-            name:     "cronjob-kcc-event",
-            logDir:   path.join(__dirname, "../../logs/cronjob/kcc-event"),
+        kcc_core_event_synchronizer: {
+            name:     "cronjob-kcc-core-event",
+            logDir:   path.join(__dirname, "../../logs/cronjob/kcc-core-event"),
+            logLevel: "info",
+            schedule: "*/60 * * * * *",
+        },
+        kcc_pair_event_synchronizer: {
+            name:     "cronjob-kcc-pair-event",
+            logDir:   path.join(__dirname, "../../logs/cronjob/kcc-pair-event"),
             logLevel: "info",
             schedule: "*/60 * * * * *",
         },

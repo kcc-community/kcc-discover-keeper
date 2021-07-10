@@ -17,15 +17,7 @@ class MonitorBlockNumberBehind5Minutes extends MonitorBase {
 
 }
 
-class MonitorEventWithFailedReceiptStatus extends MonitorBase {
-    constructor() {
-        super(APPLICATION);
-    }
-
-}
-
 
 module.exports = {
     MonitorBlockNumberBehind5Minutes,
-    MonitorEventWithFailedReceiptStatus,
 };
