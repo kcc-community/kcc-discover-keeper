@@ -38,6 +38,12 @@ class BlockChainApiModel {
         if (request.query.chain) {
             where.chain = request.query.chain.toLowerCase();
         }
+        if (request.query.txHash) {
+            where.txHash = request.query.txHash;
+        }
+        if (request.query.logIndex) {
+            where.logIndex = request.query.logIndex;
+        }
 
         const result = await dao.queryEventList(
             where,

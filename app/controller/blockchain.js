@@ -38,6 +38,9 @@ class BlockChainController extends ControllerBase {
         request.query.id    = lodash.isUndefined(request.query.id) ? 0 : parseInt(request.query.id);
         request.query.page  = lodash.isUndefined(request.query.page) ? __gateway__.pagination.page : parseInt(request.query.page);
         request.query.limit = lodash.isUndefined(request.query.limit) ? __gateway__.pagination.limit : parseInt(request.query.limit);
+        if (request.query.logIndex) {
+            request.query.logIndex = parseInt(request.query.logIndex);
+        }
         schema.validate("QueryEventList", request.query);
 
         let response = await BlockChainApiModel.queryEventList(request);

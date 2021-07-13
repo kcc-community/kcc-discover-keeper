@@ -111,6 +111,8 @@
 | ----- | ------ | ----------- | -------- |
 | id | Int | No, default 0 | id |
 | chain | String | No | chain |
+| txHash | String | No | txHash |
+| logIndex | String | No | logIndex |
 | page | Int | No, default 1 | current page number |
 | limit | Int | No, default 100 | size per page |
 
