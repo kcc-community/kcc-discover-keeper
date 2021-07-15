@@ -36,7 +36,7 @@ const config = {
             name:     "cronjob-eth-core-event",
             logDir:   path.join(__dirname, "../../logs/cronjob/eth-core-event"),
             logLevel: "info",
-            schedule: "*/1 * * * * *",
+            schedule: "*/60 * * * * *",
         },
         eth_gasprice_synchronizer:   {
             name:     "cronjob-eth-gasprice",
@@ -48,7 +48,7 @@ const config = {
             name:     "cronjob-kcc-core-event",
             logDir:   path.join(__dirname, "../../logs/cronjob/kcc-core-event"),
             logLevel: "info",
-            schedule: "*/1 * * * * *",
+            schedule: "*/60 * * * * *",
         },
         kcc_pair_event_synchronizer: {
             name:     "cronjob-kcc-pair-event",
