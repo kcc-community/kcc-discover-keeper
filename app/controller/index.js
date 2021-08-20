@@ -14,7 +14,6 @@ const router                 = new Router({prefix: __gateway__.prefix});
 
 
 router.get("/heartbeat", HealthController.heartbeat.bind(HealthController));
-router.get("/gasprice", BlockChainController.queryGasPrice.bind(BlockChainController));
 router.get("/event", BlockChainController.queryEventList.bind(BlockChainController));
 
 

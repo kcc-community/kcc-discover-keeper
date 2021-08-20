@@ -13,7 +13,7 @@ const {
 const logger                             = require("node-common-sdk").logger();
 const {Datetime}                         = require("node-common-sdk").util;
 const {JobBase}                          = require("node-common-sdk/lib/scheduler");
-const {Contract}                         = require("kcc-bridge-sdk").contract;
+const {Contract}                         = require("../common/contract");
 const {
           EventDaoView,
           RecordDaoView,
@@ -23,7 +23,6 @@ const {MonitorBlockNumberBehind5Minutes} = require("../common/monitor");
 
 class SynchronizerJob extends JobBase {
     static SECONDS = 5 * 60;
-    static ETH     = "eth";
     static KCC     = "kcc";
 
     constructor(parameter) {
@@ -94,23 +93,7 @@ class SynchronizerJob extends JobBase {
 }
 
 
-class ETHBridgeCoreSynchronizerJob extends SynchronizerJob {
-    constructor(parameter) {
-        super(parameter);
-
-        this.handler       = Contract.getBridgeCore(SynchronizerJob.ETH,
-            {
-                testnet:  __blockchain__.testnet,
-                fullnode: __integration__.ethFullnode,
-            });
-        this.confirmations = this.handler.props.confirmations;
-        this.type          = "bridge-core";
-    }
-
-}
-
-
-class KCCBridgeCoreSynchronizerJob extends SynchronizerJob {
+class DiscoverKCCSynchronizerJob extends SynchronizerJob {
     constructor(parameter) {
         super(parameter);
 
@@ -120,29 +103,11 @@ class KCCBridgeCoreSynchronizerJob extends SynchronizerJob {
                 fullnode: __integration__.kccFullnode,
             });
         this.confirmations = this.handler.props.confirmations;
-        this.type          = "bridge-core";
+        this.type          = "discover-kcc";
     }
-
-}
-
-
-class KCCBridgePairSynchronizerJob extends SynchronizerJob {
-    constructor(parameter) {
-        super(parameter);
-
-        this.handler       = Contract.getBridgePair(SynchronizerJob.KCC, {
-            testnet:  __blockchain__.testnet,
-            fullnode: __integration__.kccFullnode,
-        });
-        this.confirmations = this.handler.props.confirmations;
-        this.type          = "bridge-pair";
-    }
-
 }
 
 
 module.exports = {
-    ETHBridgeCoreSynchronizerJob,
-    KCCBridgeCoreSynchronizerJob,
-    KCCBridgePairSynchronizerJob,
+    DiscoverKCCSynchronizerJob,
 };
