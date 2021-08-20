@@ -34,7 +34,7 @@ const config = {
             name:     "cronjob-discover-kcc-event",
             logDir:   path.join(__dirname, "../../logs/cronjob/discover-kcc-event"),
             logLevel: "info",
-            schedule: "*/10 * * * * *",
+            schedule: "*/60 * * * * *",
         },
     },
     mysql:       {
