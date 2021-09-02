@@ -5,6 +5,14 @@ logs/*.log
 __pycache__/
 config_live.py
 
+package-lock.json
+
+package-lock.json
+
+package-lock.json
+
+package-lock.json
+
 .DS_Store*
 ehthumbs.db
 Icon?

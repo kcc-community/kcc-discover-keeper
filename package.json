@@ -1,7 +1,7 @@
 {
-  "name": "bridge-keeper",
+  "name": "discover kcc keeper",
   "version": "1.0.0",
-  "description": "bridge keeper service",
+  "description": "discover kcc keeper service",
   "main": "start.config.js",
   "scripts": {
     "test": "cd ./app && mocha"
@@ -16,6 +16,7 @@
     "kcc-bridge-sdk": "2.0.0",
     "koa": "2.7.0",
     "koa-router": "7.4.0",
+    "lodash": "^4.17.21",
     "node-common-sdk": "3.0.7"
   },
   "devDependencies": {

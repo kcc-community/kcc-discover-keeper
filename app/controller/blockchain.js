@@ -15,20 +15,6 @@ const {ControllerBase}       = require("./base");
 
 class BlockChainController extends ControllerBase {
     /**
-     * gasPrice
-     * @param ctx
-     * @returns {Promise<void>}
-     */
-    static async queryGasPrice(ctx) {
-        let request = await this.before(ctx);
-        schema.validate("QueryGasPrice", request.query);
-
-        let response = await BlockChainApiModel.queryGasPrice(request);
-
-        await this.after(ctx, response);
-    }
-
-    /**
      * event
      * @param ctx
      * @returns {Promise<void>}

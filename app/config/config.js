@@ -13,10 +13,8 @@ const config = {
     blockchain:  {
         testnet: process.env.TESTNET === "true",
     },
+    dAppAddress: process.env.DAPP_ADDRESS,
     integration: {
-        ethGasStation: process.env.ETH_GAS_STATION,
-        ethGasNow:     process.env.ETH_GAS_NOW,
-        ethFullnode:   process.env.ETH_FULLNODE,
         kccFullnode:   process.env.KCC_FULLNODE,
     },
     gateway:     {
@@ -32,27 +30,9 @@ const config = {
         },
     },
     cronjob:     {
-        eth_core_event_synchronizer: {
-            name:     "cronjob-eth-core-event",
-            logDir:   path.join(__dirname, "../../logs/cronjob/eth-core-event"),
-            logLevel: "info",
-            schedule: "*/60 * * * * *",
-        },
-        eth_gasprice_synchronizer:   {
-            name:     "cronjob-eth-gasprice",
-            logDir:   path.join(__dirname, "../../logs/cronjob/eth-gasprice"),
-            logLevel: "info",
-            schedule: "*/60 * * * * *",
-        },
-        kcc_core_event_synchronizer: {
-            name:     "cronjob-kcc-core-event",
-            logDir:   path.join(__dirname, "../../logs/cronjob/kcc-core-event"),
-            logLevel: "info",
-            schedule: "*/60 * * * * *",
-        },
-        kcc_pair_event_synchronizer: {
-            name:     "cronjob-kcc-pair-event",
-            logDir:   path.join(__dirname, "../../logs/cronjob/kcc-pair-event"),
+        discover_kcc_event_synchronizer: {
+            name:     "cronjob-discover-kcc-event",
+            logDir:   path.join(__dirname, "../../logs/cronjob/discover-kcc-event"),
             logLevel: "info",
             schedule: "*/60 * * * * *",
         },
