@@ -1,5 +1,5 @@
 {
-  "name": "discover kcc keeper",
+  "name": "kcc-discover-keeper",
   "version": "1.0.0",
   "description": "discover kcc keeper service",
   "main": "start.config.js",
