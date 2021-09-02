@@ -604,6 +604,19 @@
   {
     "inputs": [
       {
+        "internalType": "address payable",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "cancelledProject",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -770,6 +783,32 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "defeatSubmittedProjectInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "defeatUpdatedProjectInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -1314,6 +1353,32 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "successSubmittedProjectInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "successUpdatedProjectInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "bytes4",
         "name": "interfaceId",
         "type": "bytes4"
@@ -1492,47 +1557,6 @@
       }
     ],
     "name": "updateSecondaryCategory",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address payable",
-        "name": "projectAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint8",
-        "name": "_status",
-        "type": "uint8"
-      }
-    ],
-    "name": "verifySubmitProjectInfo",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address payable",
-        "name": "projectAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "version",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "isUpdate",
-        "type": "bool"
-      }
-    ],
-    "name": "verifyUpdateProjectInfo",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
