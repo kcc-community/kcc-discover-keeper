@@ -1,4 +1,5 @@
 TESTNET=true
+PORT=
 DATABASE=mysql://user:pass@host:port/database
 DAPP_ADDRESS=
 KCC_FULLNODE=
