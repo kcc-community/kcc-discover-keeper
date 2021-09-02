@@ -20,10 +20,10 @@ const config = {
     gateway:     {
         name:       "gateway",
         host:       "0.0.0.0",
-        port:       8010,
+        port:       process.env.PORT,
         logDir:     path.join(__dirname, "../../logs/gateway"),
         logLevel:   "info",
-        prefix:     "/v1/bridge/keeper",
+        prefix:     "/v1/discover/keeper",
         pagination: {
             page:  1,
             limit: 100,
