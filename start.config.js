@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name:               "bridge-keeper-api-server",
+            name:               "discover-keeper-api-server",
             script:             "./app/service/gateway.js",
             watch:              false,
             ignore_watch:       ["node_modules", "logs", "report"],
@@ -15,7 +15,7 @@ module.exports = {
             autorestart:        true,
         },
         {
-            name:               "bridge-keeper-kcc-core-event",
+            name:               "discover-keeper-kcc-core-event",
             script:             "./app/service/dapp_event.js",
             watch:              false,
             ignore_watch:       ["node_modules", "logs", "report"],
