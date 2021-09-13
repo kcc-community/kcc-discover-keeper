@@ -51,6 +51,25 @@
         "internalType": "address",
         "name": "reviewer",
         "type": "address"
+      }
+    ],
+    "name": "DeleteComment",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "projectAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "reviewer",
+        "type": "address"
       },
       {
         "indexed": false,
@@ -182,7 +201,7 @@
           }
         ],
         "indexed": false,
-        "internalType": "struct DappStore.CommentInfo",
+        "internalType": "struct DappStoreV5.CommentInfo",
         "name": "commentInfo",
         "type": "tuple"
       }
@@ -254,7 +273,7 @@
                 "type": "uint256"
               }
             ],
-            "internalType": "struct DappStore.RequiredProjectInfo",
+            "internalType": "struct DappStoreV5.RequiredProjectInfo",
             "name": "requiredProjectInfo",
             "type": "tuple"
           },
@@ -306,7 +325,7 @@
                 "type": "string"
               }
             ],
-            "internalType": "struct DappStore.OptionalProjectInfo",
+            "internalType": "struct DappStoreV5.OptionalProjectInfo",
             "name": "optionalProjectInfo",
             "type": "tuple"
           },
@@ -332,7 +351,7 @@
           }
         ],
         "indexed": false,
-        "internalType": "struct DappStore.ProjectInfo",
+        "internalType": "struct DappStoreV5.ProjectInfo",
         "name": "projectInfo",
         "type": "tuple"
       }
@@ -437,7 +456,7 @@
                 "type": "string"
               }
             ],
-            "internalType": "struct DappStore.OptionalProjectInfo",
+            "internalType": "struct DappStoreV5.OptionalProjectInfo",
             "name": "optionalProjectInfo",
             "type": "tuple"
           },
@@ -478,7 +497,7 @@
           }
         ],
         "indexed": false,
-        "internalType": "struct DappStore.ChangedInfo",
+        "internalType": "struct DappStoreV5.ChangedInfo",
         "name": "_changedInfo",
         "type": "tuple"
       }
@@ -677,7 +696,7 @@
             "type": "string"
           }
         ],
-        "internalType": "struct DappStore.OptionalProjectInfo",
+        "internalType": "struct DappStoreV5.OptionalProjectInfo",
         "name": "optionalProjectInfo",
         "type": "tuple"
       },
@@ -807,6 +826,19 @@
       }
     ],
     "name": "defeatUpdatedProjectInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "deleteComment",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1070,7 +1102,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct DappStore.RequiredProjectInfo",
+        "internalType": "struct DappStoreV5.RequiredProjectInfo",
         "name": "requiredProjectInfo",
         "type": "tuple"
       },
@@ -1122,7 +1154,7 @@
             "type": "string"
           }
         ],
-        "internalType": "struct DappStore.OptionalProjectInfo",
+        "internalType": "struct DappStoreV5.OptionalProjectInfo",
         "name": "optionalProjectInfo",
         "type": "tuple"
       },
@@ -1288,7 +1320,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct DappStore.RequiredProjectInfo",
+        "internalType": "struct DappStoreV5.RequiredProjectInfo",
         "name": "requiredProjectInfo",
         "type": "tuple"
       },
@@ -1340,7 +1372,7 @@
             "type": "string"
           }
         ],
-        "internalType": "struct DappStore.OptionalProjectInfo",
+        "internalType": "struct DappStoreV5.OptionalProjectInfo",
         "name": "optionalProjectInfo",
         "type": "tuple"
       }
@@ -1488,7 +1520,7 @@
                 "type": "string"
               }
             ],
-            "internalType": "struct DappStore.OptionalProjectInfo",
+            "internalType": "struct DappStoreV5.OptionalProjectInfo",
             "name": "optionalProjectInfo",
             "type": "tuple"
           },
@@ -1528,7 +1560,7 @@
             "type": "uint256"
           }
         ],
-        "internalType": "struct DappStore.ChangedInfo",
+        "internalType": "struct DappStoreV5.ChangedInfo",
         "name": "_changedInfo",
         "type": "tuple"
       }

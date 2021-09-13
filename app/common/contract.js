@@ -70,6 +70,7 @@ class DiscoverKCC extends KeeperProvider {
             this.contract.filters.VerifyUpdateProjectInfo(),
             this.contract.filters.SubmitCommentInfo(),
             this.contract.filters.IsLikeCommentInfo(),
+            this.contract.filters.DeleteComment(),
         ];
     }
 }
