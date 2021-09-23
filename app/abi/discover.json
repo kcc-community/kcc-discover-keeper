@@ -51,6 +51,25 @@
         "internalType": "address",
         "name": "reviewer",
         "type": "address"
+      }
+    ],
+    "name": "DeleteComment",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "projectAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "reviewer",
+        "type": "address"
       },
       {
         "indexed": false,
@@ -807,6 +826,19 @@
       }
     ],
     "name": "defeatUpdatedProjectInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "projectAddress",
+        "type": "address"
+      }
+    ],
+    "name": "deleteComment",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
