@@ -10,12 +10,13 @@ const path = require("path");
 require("dotenv").config({path: path.join(__dirname, "../../.env")});
 
 const config = {
+    project:     "kcc-discover-keeper",
     blockchain:  {
         testnet: process.env.TESTNET === "true",
     },
     dAppAddress: process.env.DAPP_ADDRESS,
     integration: {
-        kccFullnode:   process.env.KCC_FULLNODE,
+        kccFullnode: process.env.KCC_FULLNODE,
     },
     gateway:     {
         name:       "gateway",
@@ -51,8 +52,9 @@ const config = {
             timezone:  "+00:00",
             benchmark: true,
         },
-        echo:    true,
+        echo:    false,
     },
+    redis: process.env.REDIS
 };
 
 

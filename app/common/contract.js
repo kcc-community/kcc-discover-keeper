@@ -5,10 +5,10 @@
 * Date Created: 2021-08-13
 */
 
-const {Provider}     = require("kcc-bridge-sdk/lib/contract/provider");
+const {Provider}     = require("kcc-bridge-sdk-bsc/lib/contract/provider");
 const DiscoverKccAbi = require("../abi/discover.json");
 const Ethers         = require("ethers");
-const config         = require("kcc-bridge-sdk/lib/config/config");
+const config         = require("kcc-bridge-sdk-bsc/lib/config/config");
 const KeeperConfig   = require("../config/config");
 const lodash         = require("lodash");
 
