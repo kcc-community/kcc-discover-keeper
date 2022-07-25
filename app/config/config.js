@@ -42,8 +42,8 @@ const config = {
         url:     process.env.DATABASE,
         options: {
             pool:      {
-                max: 50,
-                min: 10,
+                max: 3,
+                min: 1,
             },
             define:    {
                 timestamps:      false,
