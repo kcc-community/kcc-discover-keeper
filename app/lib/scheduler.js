@@ -18,7 +18,11 @@ class Scheduler {
             redis,
             prefix: this.name,
         });
-        await queue.add({name: this.name}, {repeat: {cron: this.schedule}});
+        await queue.add({name: this.name}, {
+            repeat:           {cron: this.schedule},
+            removeOnComplete: true,
+            removeOnFail:     true,
+        });
         queue.process(async (job, done) => {
             logger.info(`Queue start: ${job.data.name}`);
             await this.callback();
